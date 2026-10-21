@@ -57,6 +57,17 @@ TransMIL reported the best accuracy and AUC against ABMIL, MIL-RNN, DSMIL, CLAM 
 2. **Context matters.** Modeling how patches relate (TransMIL) improves slide-level classification, at a quadratic compute cost.
 3. **Representation first, classifier second.** Under heavy imbalance, contrastive representation learning followed by classifier learning (SC-MIL) generalizes better, including out of distribution.
 
+## Reproduction: attention MIL on MNIST-bags
+
+[`attention_mil_mnist_bags.ipynb`](attention_mil_mnist_bags.ipynb) is a from-scratch PyTorch reimplementation of the MNIST-bags experiment from Ilse et al. (2018). Bags of MNIST digits are labeled positive if they contain a **9**; the model never sees which digit is the 9. It compares **mean**, **max**, **attention** and **gated attention** pooling across training-set sizes and seeds, and checks whether attention lands on the 9s.
+
+```bash
+pip install -r requirements.txt
+python attention_mil_mnist_bags.py        # or open the notebook; about 10-20 minutes on a CPU
+```
+
+Results are written to `results/` (`results.md`, `results.json`, `auc_vs_train_bags.png`, `attention_example.png`).
+
 ## References
 
 1. Dietterich, T. G., Lathrop, R. H., & Lozano-Pérez, T. (1997). Solving the multiple-instance problem with axis-parallel rectangles. *Artificial Intelligence*, 89(1–2), 31–71.
