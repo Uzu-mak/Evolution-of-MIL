@@ -68,6 +68,32 @@ python attention_mil_mnist_bags.py        # or open the notebook; about 10-20 mi
 
 Results are written to `results/` (`results.md`, `results.json`, `auc_vs_train_bags.png`, `attention_example.png`).
 
+### Results (my run: CPU, PyTorch 2.14, 3 seeds, 1,000 test bags, 16 minutes)
+
+Mean ± standard deviation over seeds. The last column is how often the instance with the highest attention weight in a positive test bag is actually a 9.
+
+| Train bags | Pooling | Test AUC | Test accuracy | Top-attended instance is a 9 |
+| ---: | --- | ---: | ---: | ---: |
+| 50 | mean | 0.725 ± 0.020 | 0.698 ± 0.013 | - |
+| 50 | max | 0.808 ± 0.065 | 0.722 ± 0.036 | - |
+| 50 | attention | 0.691 ± 0.124 | 0.687 ± 0.074 | 45.4% |
+| 50 | gated_attention | 0.733 ± 0.137 | 0.726 ± 0.075 | 52.7% |
+| 100 | mean | 0.868 ± 0.017 | 0.791 ± 0.007 | - |
+| 100 | max | 0.947 ± 0.004 | 0.870 ± 0.013 | - |
+| 100 | attention | 0.953 ± 0.013 | 0.889 ± 0.007 | 92.2% |
+| 100 | gated_attention | 0.953 ± 0.001 | 0.889 ± 0.009 | 91.3% |
+| 200 | mean | 0.939 ± 0.017 | 0.870 ± 0.027 | - |
+| 200 | max | 0.973 ± 0.003 | 0.916 ± 0.009 | - |
+| 200 | attention | 0.972 ± 0.001 | 0.921 ± 0.012 | 95.0% |
+| 200 | gated_attention | 0.963 ± 0.009 | 0.902 ± 0.019 | 94.6% |
+What the run shows:
+
+- **Attention learns *where* the evidence is.** With 100 or more training bags, the top-attended digit in a positive bag is a 9 in 91–95% of bags, although the model was only ever told the bag label.
+- **On AUC alone, max pooling is a strong baseline.** At 200 bags, attention (0.972) and max pooling (0.973) are level, and both beat mean pooling (0.939). Attention's edge here is interpretability and slightly higher accuracy, not raw AUC.
+- **With 50 bags, attention is unstable.** AUC ranged from 0.55 to 0.87 across seeds and localization from 8% to 84%: whether the model finds the signal depends on the initialization. Ilse et al. likewise report lower AUC for small training sets with 10-instance bags.
+
+Full per-seed output: [`results/run_log.txt`](results/run_log.txt).
+
 ## References
 
 1. Dietterich, T. G., Lathrop, R. H., & Lozano-Pérez, T. (1997). Solving the multiple-instance problem with axis-parallel rectangles. *Artificial Intelligence*, 89(1–2), 31–71.

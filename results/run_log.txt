@@ -1,0 +1,43 @@
+device: cpu | torch 2.14.1+cpu
+100.0%
+100.0%
+100.0%
+100.0%
+test bags: 1000 | positive share: 0.637
+mean             train_bags= 50 seed=0  AUC=0.746  acc=0.702
+mean             train_bags= 50 seed=1  AUC=0.730  acc=0.711
+mean             train_bags= 50 seed=2  AUC=0.699  acc=0.681
+max              train_bags= 50 seed=0  AUC=0.717  acc=0.694
+max              train_bags= 50 seed=1  AUC=0.862  acc=0.773
+max              train_bags= 50 seed=2  AUC=0.844  acc=0.700
+attention        train_bags= 50 seed=0  AUC=0.617  acc=0.646  top1_is_9=0.39
+attention        train_bags= 50 seed=1  AUC=0.866  acc=0.791  top1_is_9=0.84
+attention        train_bags= 50 seed=2  AUC=0.590  acc=0.623  top1_is_9=0.14
+gated_attention  train_bags= 50 seed=0  AUC=0.784  acc=0.761  top1_is_9=0.70
+gated_attention  train_bags= 50 seed=1  AUC=0.870  acc=0.795  top1_is_9=0.80
+gated_attention  train_bags= 50 seed=2  AUC=0.545  acc=0.622  top1_is_9=0.08
+mean             train_bags=100 seed=0  AUC=0.864  acc=0.792
+mean             train_bags=100 seed=1  AUC=0.849  acc=0.799
+mean             train_bags=100 seed=2  AUC=0.890  acc=0.782
+max              train_bags=100 seed=0  AUC=0.948  acc=0.853
+max              train_bags=100 seed=1  AUC=0.941  acc=0.875
+max              train_bags=100 seed=2  AUC=0.952  acc=0.883
+attention        train_bags=100 seed=0  AUC=0.967  acc=0.891  top1_is_9=0.95
+attention        train_bags=100 seed=1  AUC=0.936  acc=0.880  top1_is_9=0.89
+attention        train_bags=100 seed=2  AUC=0.956  acc=0.896  top1_is_9=0.92
+gated_attention  train_bags=100 seed=0  AUC=0.952  acc=0.901  top1_is_9=0.91
+gated_attention  train_bags=100 seed=1  AUC=0.954  acc=0.888  top1_is_9=0.92
+gated_attention  train_bags=100 seed=2  AUC=0.952  acc=0.878  top1_is_9=0.91
+mean             train_bags=200 seed=0  AUC=0.937  acc=0.872
+mean             train_bags=200 seed=1  AUC=0.918  acc=0.837
+mean             train_bags=200 seed=2  AUC=0.960  acc=0.902
+max              train_bags=200 seed=0  AUC=0.973  acc=0.928
+max              train_bags=200 seed=1  AUC=0.977  acc=0.907
+max              train_bags=200 seed=2  AUC=0.970  acc=0.913
+attention        train_bags=200 seed=0  AUC=0.973  acc=0.905  top1_is_9=0.96
+attention        train_bags=200 seed=1  AUC=0.973  acc=0.935  top1_is_9=0.95
+attention        train_bags=200 seed=2  AUC=0.971  acc=0.922  top1_is_9=0.94
+gated_attention  train_bags=200 seed=0  AUC=0.975  acc=0.924  top1_is_9=0.96
+gated_attention  train_bags=200 seed=1  AUC=0.960  acc=0.877  top1_is_9=0.95
+gated_attention  train_bags=200 seed=2  AUC=0.953  acc=0.904  top1_is_9=0.92
+done in 16.2 min
