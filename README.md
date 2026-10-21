@@ -90,7 +90,8 @@ What the run shows:
 
 - **Attention learns *where* the evidence is.** With 100 or more training bags, the top-attended digit in a positive bag is a 9 in 91–95% of bags, although the model was only ever told the bag label.
 - **On AUC alone, max pooling is a strong baseline.** At 200 bags, attention (0.972) and max pooling (0.973) are level, and both beat mean pooling (0.939). Attention's edge here is interpretability and slightly higher accuracy, not raw AUC.
-- **With 50 bags, attention is unstable.** AUC ranged from 0.55 to 0.87 across seeds and localization from 8% to 84%: whether the model finds the signal depends on the initialization. Ilse et al. likewise report lower AUC for small training sets with 10-instance bags.
+- **With 50 bags, attention is unstable.** AUC ranged from 0.55 to 0.87 across seeds and localization from 8% to 84%: whether the model finds the signal depends on the initialization.
+- **Where this differs from the paper.** Ilse et al. report attention clearly ahead of the other methods at 50–150 training bags. This run does not reproduce that at 50 bags (max pooling is higher on average there) and shows only a small edge at 100. Likely reasons: a reduced setup (3 seeds instead of more repetitions, a fixed 20 epochs with no validation-based early stopping) and embedding-level mean/max baselines rather than the paper's full set. More seeds and early stopping are the next things to try.
 
 Full per-seed output: [`results/run_log.txt`](results/run_log.txt).
 
